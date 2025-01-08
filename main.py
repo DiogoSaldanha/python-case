@@ -1,5 +1,5 @@
 import requests
-
+import pandas
 # Variáveis para as URL's
 usersURL = "https://jsonplaceholder.typicode.com/users"
 
@@ -47,11 +47,18 @@ for item in usersResponse:
     print(f"Média de caracteres do user de ID {userId}: {averageOfCharacters}")
 
     userData.append({
-        "UserID": userId,
-        "UserName": userName,
-        "AmountOfPosts": amountOfPosts,
-        "AveragePostCharacters": averageOfCharacters
+        "ID de Usuário": userId,
+        "Nome de Usuário": userName,
+        "Quantidade de Posts": amountOfPosts,
+        "Média de Caracteres por Post": averageOfCharacters
     })
 
 
 print(userData)
+
+#Usando pandas para criar a planilha
+
+#Criando o DataFrame
+dataFrame = pandas.DataFrame(userData)
+dataFrame.to_excel("user-data.xlsx", index=False)
+print("Dados transferidos para o arquivo 'user-data.xlsx' com sucesso.")
