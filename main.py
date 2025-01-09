@@ -1,5 +1,6 @@
 import requests
 import pandas
+
 # Variáveis para as URL's
 usersURL = "https://jsonplaceholder.typicode.com/users"
 
@@ -54,11 +55,18 @@ for item in usersResponse:
     })
 
 
-print(userData)
+print("\n", userData)
 
 #Usando pandas para criar a planilha
 
 #Criando o DataFrame
 dataFrame = pandas.DataFrame(userData)
 dataFrame.to_excel("user-data.xlsx", index=False)
-print("Dados transferidos para o arquivo 'user-data.xlsx' com sucesso.")
+print("\nDados transferidos para o arquivo 'user-data.xlsx' com sucesso.")
+
+#Enviando para endpoint fictício
+endpointURL = "https://jsonplaceholder.typicode.com/send-email"
+postRequest = requests.post(endpointURL, json=userData)
+
+print("\nStatus da requisição POST: ", postRequest.status_code)
+print("Resposta: ", postRequest.text)
