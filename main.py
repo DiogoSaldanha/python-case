@@ -18,7 +18,6 @@ class DataCase:
     
     def calculateAverageOfCharacters(self, posts, amountOfPosts):
         bodyCharacterByUser = 0
-
         for post in posts:
             postBody = post['body']
             postBodyLength = len(postBody)
@@ -35,7 +34,7 @@ class DataCase:
             userId = user['id']
             userName = user['name']
 
-            print("------------------------------------------------------------------------------------------")
+            print("--------------------------------------------------------------------------------------------------------------------------")
             print("ID do usuário: ", userId)
             print("Nome do usuário: ", userName)
 
@@ -58,8 +57,8 @@ class DataCase:
                 "Média de Caracteres por Post": average
             })
 
-        print("_________________________________________________________________")
-        print("\n\n-------------------------------------------------------\nDados do Usuário:\n-------------------------------------------------------\n", self.userData)
+        print("--------------------------------------------------------------------------------------------------------------------------")
+        print("\n\n-------------------------------------------------------\nDados dos Usuários:\n-------------------------------------------------------\n", self.userData)
         print("-------------------------------------------------------\n")
 
     def createDataFrame(self):
@@ -70,7 +69,8 @@ class DataCase:
     def postToEndpoint(self):
         endpointPostRequest = requests.post(self.postEndpoint, json=self.userData)
         print("\n-------------------------------------------------------\nStatus da requisição POST: ", endpointPostRequest.status_code)
-        print("Resposta: \n-------------------------------------------------------", endpointPostRequest.text)
+        print("Resposta: ", endpointPostRequest.text)
+        print("-------------------------------------------------------")
 
     def runCode(self):
         self.processData()
